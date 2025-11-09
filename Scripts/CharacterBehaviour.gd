@@ -67,7 +67,7 @@ func _input(event):
 		print("Key pressed: ", event.keycode)  # Debug: see what key is pressed
 		
 		# Toggle menu with F2 (changed from F1)
-		if event.keycode == KEY_F2:
+		if event.is_action_pressed() == KEY_F2:
 			print("F2 detected!")  # Debug
 			if customization_menu:
 				print("Customization menu exists")  # Debug
