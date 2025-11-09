@@ -67,7 +67,7 @@ func _input(event):
 		print("Key pressed: ", event.keycode)  # Debug: see what key is pressed
 		
 		# Toggle menu with F2 (changed from F1)
-		if event.is_action_pressed() == KEY_F2:
+		if event.is_action_pressed("toggle_menu"):
 			print("F2 detected!")  # Debug
 			if customization_menu:
 				print("Customization menu exists")  # Debug
@@ -97,7 +97,7 @@ func _input(event):
 			get_viewport().set_input_as_handled()
 		
 		# Toggle passthrough with Ctrl+P
-		elif event.keycode == KEY_P and event.ctrl_pressed:
+		elif event.is_action_pressed("passthrough"):
 			passthrough = !passthrough
 			if passthrough:
 				DisplayServer.window_set_mouse_passthrough(PackedVector2Array([]))
