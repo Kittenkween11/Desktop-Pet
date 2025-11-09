@@ -3,9 +3,9 @@ extends Control
 
 signal color_changed(color: Color)
 
-@onready var color_picker = $MarginContainer/VBoxContainer/Panel/ColorPickerButton
-@onready var close_button = $MarginContainer/VBoxContainer/Panel/Button
-@onready var label = $MarginContainer/VBoxContainer/Panel/Label
+@onready var color_picker = $VBoxContainer/Panel/ColorPickerButton
+@onready var close_button = $VBoxContainer/Panel/Button
+@onready var label = $VBoxContainer/Panel/Label
 
 func _ready():
 	# Connect signals
