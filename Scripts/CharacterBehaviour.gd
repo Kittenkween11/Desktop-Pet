@@ -9,7 +9,7 @@ var passthrough = false
 
 # Window size variables
 var default_window_size = Vector2(200, 200)
-var menu_window_size = Vector2(700, 700)  # Make it bigger to be safe
+var menu_window_size = Vector2(200, 200)  # Make it bigger to be safe
 
 func _ready():
 	# Set window content scale mode to disabled so it doesn't interfere
@@ -64,15 +64,20 @@ func _ready():
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
+		print("Key pressed: ", event.keycode)  # Debug: see what key is pressed
+		
 		# Toggle menu with F2 (changed from F1)
 		if event.keycode == KEY_F2:
+			print("F2 detected!")  # Debug
 			if customization_menu:
+				print("Customization menu exists")  # Debug
 				if customization_menu.visible:
 					# Hide menu - shrink window
 					customization_menu.hide()
 					get_window().size = Vector2i(default_window_size)
 					print("Menu closed - Window size: ", get_window().size)
 				else:
+					print("Opening menu...")  # Debug
 					# Show menu - expand window FIRST
 					get_window().size = Vector2i(menu_window_size)
 					print("Window resized to: ", get_window().size)
@@ -86,8 +91,10 @@ func _input(event):
 					print("Menu opened - Actual window size: ", get_window().size)
 					print("Menu size: ", customization_menu.size)
 					print("Panel size: ", customization_menu.get_node("MarginContainer/VBoxContainer/Panel").size if customization_menu.has_node("MarginContainer/VBoxContainer/Panel") else "Panel not found")
+			else:
+				print("ERROR: Customization menu is null!")  # Debug
 				
-				get_viewport().set_input_as_handled()
+			get_viewport().set_input_as_handled()
 		
 		# Toggle passthrough with Ctrl+P
 		elif event.keycode == KEY_P and event.ctrl_pressed:
