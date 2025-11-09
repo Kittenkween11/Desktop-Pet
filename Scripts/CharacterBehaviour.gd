@@ -3,81 +3,18 @@ extends CharacterBody2D
 
 var direction = Vector2.ZERO
 var speed = 80.0
-var screen_size
-var passthrough = false
 
 func _ready():
-	# Set window content scale mode to disabled so it doesn't interfere
-	get_window().content_scale_mode = Window.CONTENT_SCALE_MODE_DISABLED
-	
-	# Wait for window to actually resize
-	await get_tree().process_frame
-	
-	get_viewport().transparent_bg = true
-	
-	# Position the character at window center
-	var window_size = Vector2(get_window().size)
+	var window_size = get_window().size
 	position = window_size / 2
-	
-	# Define the clickable area around the sprite
-	var clickable_size = Vector2(100, 100)
-	var center = window_size / 2
-	
-	var polygon = PackedVector2Array([
-		center - clickable_size / 2,
-		center + Vector2(clickable_size.x / 2, -clickable_size.y / 2),
-		center + clickable_size / 2,
-		center + Vector2(-clickable_size.x / 2, clickable_size.y / 2)
-	])
-	
-	DisplayServer.window_set_mouse_passthrough(polygon)
 	
 	sprite.visible = true
 	sprite.play("idle")
 	
 	randomize()
-	screen_size = DisplayServer.screen_get_size()
-	
-	# Position window on screen initially (center of desktop)
-	var initial_screen_pos = Vector2(screen_size) / 2
-	DisplayServer.window_set_position(Vector2i(initial_screen_pos - window_size / 2))
-	
 	random_walk()
 
-func _input(event):
-	if event is InputEventKey and event.pressed:
-		print("Key pressed: ", event.keycode)  # Debug: see what key is pressed
-		
-		# Toggle passthrough with Ctrl+P
-		if event.is_action_pressed("passthrough"):
-			passthrough = !passthrough
-			if passthrough:
-				DisplayServer.window_set_mouse_passthrough(PackedVector2Array([]))
-			else:
-				var window_size = Vector2(get_window().size)
-				var clickable_size = Vector2(100, 100)
-				var center = window_size / 2
-				var polygon = PackedVector2Array([
-					center - clickable_size / 2,
-					center + Vector2(clickable_size.x / 2, -clickable_size.y / 2),
-					center + clickable_size / 2,
-					center + Vector2(-clickable_size.x / 2, clickable_size.y / 2)
-				])
-				DisplayServer.window_set_mouse_passthrough(polygon)
-
 func _physics_process(_delta):
-	# Move the window itself around the desktop
-	var current_window_pos = DisplayServer.window_get_position()
-	var new_window_pos = current_window_pos + Vector2i(direction * speed * _delta)
-	
-	# Keep window on screen
-	var window_size = get_window().size
-	new_window_pos.x = clampi(new_window_pos.x, 0, screen_size.x - window_size.x)
-	new_window_pos.y = clampi(new_window_pos.y, 0, screen_size.y - window_size.y)
-	
-	DisplayServer.window_set_position(new_window_pos)
-	
-	# Flip sprite based on direction
 	if direction.x < 0:
 		sprite.flip_h = true
 	elif direction.x > 0:
