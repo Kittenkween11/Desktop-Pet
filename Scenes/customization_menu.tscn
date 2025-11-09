@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://iaqpgmnoca05" path="res://Scenes/customization_menu.gd" id="1_uiw27"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ly45k"]
-bg_color = Color(0.28627452, 0.5764706, 0.7019608, 0.5764706)
+bg_color = Color(0.3806705, 0.67509294, 0.8538228, 0.5803922)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -52,13 +52,13 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_uiw27")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-color = Color(0.57965446, 0.7827728, 0.85757506, 0.5803922)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 texture_filter = 1
@@ -66,6 +66,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 250.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15

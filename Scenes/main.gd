@@ -5,7 +5,6 @@ extends Node2D
 var passthrough = false
 
 func _ready() -> void:
-	customization_menu.hide()
 	get_viewport().transparent_bg = true
 	_toggle_passthrough()
 	

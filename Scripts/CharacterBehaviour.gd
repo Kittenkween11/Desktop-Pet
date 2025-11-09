@@ -15,6 +15,12 @@ func _ready():
 	random_walk()
 
 func _physics_process(_delta):
+	var new_position = position + Vector2(direction * speed * _delta)
+	
+	new_position.x = clampf(new_position.x, 0, get_window().size.x)
+	new_position.y = clampf(new_position.y, 0, get_window().size.y)
+	position = new_position
+	
 	if direction.x < 0:
 		sprite.flip_h = true
 	elif direction.x > 0:
