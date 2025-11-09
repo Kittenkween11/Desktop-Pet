@@ -32,8 +32,3 @@ func _on_color_changed(color: Color):
 func _on_close_pressed():
 	print("Close button pressed")
 	hide()
-
-func _input(event):
-	if event.is_action_pressed("ui_cancel") and visible:
-		hide()
-		get_viewport().set_input_as_handled()

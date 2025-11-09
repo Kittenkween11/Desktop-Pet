@@ -6,17 +6,9 @@ var speed = 80.0
 var screen_size
 var passthrough = false
 
-# Window size variables
-var default_window_size = Vector2(200, 200)
-var menu_window_size = Vector2(200, 200)  # Make it bigger to be safe
-
 func _ready():
 	# Set window content scale mode to disabled so it doesn't interfere
 	get_window().content_scale_mode = Window.CONTENT_SCALE_MODE_DISABLED
-	
-	# Set window size FIRST before anything else
-	get_window().size = Vector2i(default_window_size)
-	get_window().min_size = Vector2i(200, 200)  # Set minimum size
 	
 	# Wait for window to actually resize
 	await get_tree().process_frame
@@ -26,9 +18,6 @@ func _ready():
 	# Position the character at window center
 	var window_size = Vector2(get_window().size)
 	position = window_size / 2
-	
-	print("Initial Window size: ", window_size)
-	print("Character position: ", position)
 	
 	# Define the clickable area around the sprite
 	var clickable_size = Vector2(100, 100)
@@ -115,7 +104,3 @@ func stop():
 # Customization callbacks
 func _on_color_changed(color: Color):
 	sprite.modulate = color
-
-func _on_menu_closed():
-	get_window().size = Vector2i(default_window_size)
-	print("Menu closed via button - Window resized to: ", get_window().size)
