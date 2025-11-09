@@ -47,11 +47,15 @@ Button/styles/disabled = SubResource("StyleBoxFlat_uiw27")
 Button/styles/normal = SubResource("StyleBoxFlat_117ii")
 Button/styles/pressed = SubResource("StyleBoxFlat_wv1w4")
 
-[node name="CustomizationMenu" type="Window"]
-oversampling_override = 1.0
+[node name="CustomizationMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 36.0
+offset_bottom = 36.0
 script = ExtResource("1_uiw27")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
