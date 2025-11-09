@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcm0gwoecs7iv"]
+[gd_scene load_steps=4 format=3 uid="uid://bcm0gwoecs7iv"]
 
+[ext_resource type="Script" uid="uid://dlos44i72380s" path="res://Scenes/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bhgarhees0xas" path="res://Scenes/node_2d.tscn" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://sco00rx6unyp" path="res://Scenes/customization_menu.tscn" id="2_8gbba"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_8gbba")
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_bo1nx")]
 
