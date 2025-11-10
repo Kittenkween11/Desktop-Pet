@@ -1,12 +1,21 @@
 extends Node2D
 
 @onready var customization_menu = $CustomizationMenu
+@onready var character = $CharacterBody2D
 
 var passthrough = false
 
 func _ready() -> void:
 	get_viewport().transparent_bg = true
 	_toggle_passthrough()
+	if customization_menu and character:
+		customization_menu.color_changed.connect(change_character_color)
+		
+func change_character_color(color: Color):
+	if character:
+		var sprite = character.get_node("AnimatedSprite2D")
+		if sprite:
+			sprite.modulate = color
 	
 func _toggle_passthrough():
 	passthrough = !passthrough
