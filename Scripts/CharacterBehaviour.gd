@@ -41,6 +41,7 @@ func move_to_position_target(target_pos: Vector2):
 	direction = (target_pos - position).normalized()
 
 func movement():
+	sprite.stop()
 	sprite.play("idle")
 	random_walk()
 
