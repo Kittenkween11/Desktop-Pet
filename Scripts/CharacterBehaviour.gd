@@ -35,14 +35,14 @@ func random_walk():
 		sprite.play("idle")
 	
 	await get_tree().create_timer(randf_range(2, 4)).timeout
-	random_walk()
+	movement()
 
 func move_to_position_target(target_pos: Vector2):
 	direction = (target_pos - position).normalized()
 
-func stop():
-	direction = Vector2.ZERO
+func movement():
 	sprite.play("idle")
+	random_walk()
 
 # Customization callbacks
 func _on_color_changed(color: Color):
