@@ -35,7 +35,6 @@ func random_walk():
 		sprite.play("idle")
 	
 	await get_tree().create_timer(randf_range(2, 4)).timeout
-	random_walk()
 
 func move_to_position_target(target_pos: Vector2):
 	direction = (target_pos - position).normalized()
