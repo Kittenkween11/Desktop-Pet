@@ -116,6 +116,5 @@ sprite_frames = SubResource("SpriteFrames_tx0tn")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_wjtap")
