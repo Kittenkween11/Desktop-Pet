@@ -7,7 +7,7 @@ var speed = 80.0
 var half_extents = Vector2.ZERO
 
 func _ready():
-	var viewport_size = get_viewport_rect().size # Use viewport size for game area
+	var viewport_size = get_viewport_rect().size
 	position = viewport_size / 2
 	
 	if collision_shape.shape is RectangleShape2D:
@@ -65,7 +65,7 @@ func random_walk():
 	if direction != Vector2.ZERO:
 		sprite.play("walkSide")
 	else:
-		sprite.play("idle") 
+		sprite.play("idle")
 	
 	await get_tree().create_timer(randf_range(6, 8)).timeout
 	
